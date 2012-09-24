@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Linq.Expressions;
 using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace PersonalFinance.Data.Interfaces
 {
-    public interface IBaseRepository<T> : IDisposable
+    public interface IBaseRepository<T>
         where T : class
     {
         IEnumerable<T> ListAll();

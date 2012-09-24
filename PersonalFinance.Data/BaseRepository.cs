@@ -18,42 +18,42 @@ namespace PersonalFinance.Data
             set { entities = value; }
         }
 
-        public IEnumerable<T> ListAll()
+        public virtual IEnumerable<T> ListAll()
         {
             return entities.Set<T>();
         }
 
-        public IEnumerable<T> Search(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        public virtual IEnumerable<T> Search(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
         {
             return entities.Set<T>().Where(predicate);
         }
 
-        public T Find(int id)
+        public virtual T Find(int id)
         {
             return entities.Set<T>().Find(id);
         }
 
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             entities.Set<T>().Add(entity);
         }
 
-        public void Edit(T entity)
+        public virtual void Edit(T entity)
         {
             entities.Entry(entity).State = System.Data.EntityState.Modified;
         }
 
-        public void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             entities.Set<T>().Remove(entity);
         }
 
-        public bool Save()
+        public virtual bool Save()
         {
             return (entities.SaveChanges() > 0);
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             if (entities != null) entities.Dispose();
         }
